@@ -26,4 +26,9 @@ RSpec.describe 'add' do
     expect { add("1,-2,3") }.to raise_error(RuntimeError, "negatives not allowed: -2")
     expect { add("1,-2,3,-4") }.to raise_error(RuntimeError, "negatives not allowed: -2, -4")
   end
+
+  it "ignores numbers greater than 1000" do
+    expect(add("1,2,1001")).to eq 3
+    expect(add("1000,1001")).to eq 1000
+  end
 end

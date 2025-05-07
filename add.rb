@@ -13,7 +13,7 @@ def add(str)
     delimiter = /[,\n]/
   end
 
-  nums = str.split(delimiter).map(&:to_i)
+  nums = str.split(delimiter).map(&:to_i).reject { |num| num > 1000 }
   negatives = nums.select { |num| num < 0 }
 
   raise "negatives not allowed: #{negatives.join(', ')}" unless negatives.empty?
