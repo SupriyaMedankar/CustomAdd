@@ -21,4 +21,9 @@ RSpec.describe 'add' do
   it "accepts delimeters other than comma" do
     expect(add("//;\n1;2;3")).to eq 6
   end
+
+  it "throws error for negative numbers" do
+    expect { add("1,-2,3") }.to raise_error(RuntimeError, "negatives not allowed: -2")
+    expect { add("1,-2,3,-4") }.to raise_error(RuntimeError, "negatives not allowed: -2, -4")
+  end
 end
