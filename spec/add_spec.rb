@@ -13,4 +13,12 @@ RSpec.describe 'add' do
     expect(add("1")).to eq 1
     expect(add("1,2")).to eq 3
   end
+
+  it "allow \n as delimiter" do
+    expect(add("1,2\n3")).to eq 6
+  end
+
+  it "accepts delimeters other than comma" do
+    expect(add("//;\n1;2;3")).to eq 6
+  end
 end
