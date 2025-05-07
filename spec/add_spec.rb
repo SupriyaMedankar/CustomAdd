@@ -31,4 +31,9 @@ RSpec.describe 'add' do
     expect(add("1,2,1001")).to eq 3
     expect(add("1000,1001")).to eq 1000
   end
+
+  it "accepts delimiters with multiple characters" do
+    expect(add("//[**]\n1**2**3")).to eq 6
+    expect(add("//[**][%%]\n1**2%%3")).to eq 6
+  end
 end

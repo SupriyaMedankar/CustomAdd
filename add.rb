@@ -8,7 +8,8 @@ def add(str)
   # Check if the string starts with a custom delimiter
   if str.start_with?("//")
     delimiter, str = str.split("\n", 2)
-    delimiter = delimiter.gsub("//", "")
+    delimiters = delimiter.gsub("//", "").split(/[\[\]]+/).reject(&:empty?)
+    delimiter = Regexp.union(delimiters)
   else
     delimiter = /[,\n]/
   end
